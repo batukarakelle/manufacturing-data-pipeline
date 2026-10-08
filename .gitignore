@@ -158,6 +158,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.venv/
 
 # Spyder project settings
 .spyderproject
@@ -218,3 +219,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Manufacturing Equipment Data Pipeline
+# Generated ETL outputs (recreated by running the pipeline)
+data/processed/

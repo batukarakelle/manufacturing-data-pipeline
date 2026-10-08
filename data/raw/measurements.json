@@ -1,0 +1,212 @@
+[
+  {
+    "measurementId": "M071",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T15:50:00+02:00",
+    "tempC": 23.62,
+    "vibrationMmS": 0.51
+  },
+  {
+    "measurementId": "M072",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T15:55:00+02:00",
+    "tempC": 24.5,
+    "vibrationMmS": 1.36
+  },
+  {
+    "measurementId": "M073",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T16:00:00+02:00",
+    "tempC": 21.91,
+    "vibrationMmS": 0.79
+  },
+  {
+    "measurementId": "M074",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T16:05:00+02:00",
+    "tempC": 24.68,
+    "vibrationMmS": 0.53
+  },
+  {
+    "measurementId": "M075",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T16:10:00+02:00",
+    "tempC": 21.41,
+    "vibrationMmS": 1.07
+  },
+  {
+    "measurementId": "M076",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T16:15:00+02:00",
+    "tempC": 21.55,
+    "vibrationMmS": 0.72
+  },
+  {
+    "measurementId": "M077",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T16:20:00+02:00",
+    "tempC": 24.18,
+    "vibrationMmS": 0.94
+  },
+  {
+    "measurementId": "M078",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T16:25:00+02:00",
+    "tempC": 20.35,
+    "vibrationMmS": 0.94
+  },
+  {
+    "measurementId": "M079",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T16:30:00+02:00",
+    "tempC": 21.92,
+    "vibrationMmS": 1.1
+  },
+  {
+    "measurementId": "M002",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T16:35:00+02:00",
+    "tempC": 23.4,
+    "vibrationMmS": 1.47
+  },
+  {
+    "measurementId": "M081",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T16:40:00+02:00",
+    "tempC": 24.86,
+    "vibrationMmS": 1.28
+  },
+  {
+    "measurementId": "M082",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T16:45:00+02:00",
+    "tempC": 24.31,
+    "vibrationMmS": 0.98
+  },
+  {
+    "measurementId": "M083",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T16:50:00+02:00",
+    "tempC": 24.07,
+    "vibrationMmS": 1.47
+  },
+  {
+    "measurementId": "M084",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T16:55:00+02:00",
+    "tempC": 24.14,
+    "vibrationMmS": 0.7
+  },
+  {
+    "measurementId": "M085",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T17:00:00+02:00",
+    "tempC": 21.23,
+    "vibrationMmS": 0.59
+  },
+  {
+    "measurementId": "M086",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T17:05:00+02:00",
+    "tempC": 22.79,
+    "vibrationMmS": 0.53
+  },
+  {
+    "measurementId": "M087",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T17:10:00+02:00",
+    "tempC": 24.06,
+    "vibrationMmS": 1.1
+  },
+  {
+    "measurementId": "M088",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T17:15:00+02:00",
+    "tempC": 23.87,
+    "vibrationMmS": 0.92
+  },
+  {
+    "measurementId": "M089",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T17:20:00+02:00",
+    "tempC": 24.5,
+    "vibrationMmS": 0.57
+  },
+  {
+    "measurementId": "M090",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T17:25:00+02:00",
+    "tempC": 23.52,
+    "vibrationMmS": 0.68
+  },
+  {
+    "measurementId": "M091",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T17:30:00+02:00",
+    "tempC": 22.3,
+    "vibrationMmS": 0.7
+  },
+  {
+    "measurementId": "M092",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T17:35:00+02:00",
+    "tempC": 23.01,
+    "vibrationMmS": 0.97
+  },
+  {
+    "measurementId": "M093",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T17:40:00+02:00",
+    "tempC": 21.74,
+    "vibrationMmS": 1.0
+  },
+  {
+    "measurementId": "M094",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T17:45:00+02:00",
+    "tempC": 20.25,
+    "vibrationMmS": 1.11
+  },
+  {
+    "measurementId": "M095",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T17:50:00+02:00",
+    "tempC": 20.67,
+    "vibrationMmS": 1.36
+  },
+  {
+    "measurementId": "M096",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T17:55:00+02:00",
+    "tempC": 22.38,
+    "vibrationMmS": 0.8
+  },
+  {
+    "measurementId": "M097",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T18:00:00+02:00",
+    "tempC": 20.77,
+    "vibrationMmS": 1.02
+  },
+  {
+    "measurementId": "M098",
+    "machineId": "EQ-03",
+    "recordedAt": "2026-10-08T18:05:00+02:00",
+    "tempC": 21.53,
+    "vibrationMmS": 0.87
+  },
+  {
+    "measurementId": "M099",
+    "machineId": "EQ-02",
+    "recordedAt": "2026-10-08T18:10:00+02:00",
+    "tempC": 21.85,
+    "vibrationMmS": 1.46
+  },
+  {
+    "measurementId": "M100",
+    "machineId": "EQ-01",
+    "recordedAt": "2026-10-08T18:15:00+02:00",
+    "tempC": 20.66,
+    "vibrationMmS": 1.5
+  }
+]
