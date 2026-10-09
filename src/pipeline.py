@@ -1,4 +1,6 @@
-"""Extract and standardize manufacturing equipment measurements."""
+"""
+Extract and standardize manufacturing equipment measurements.
+"""
 
 from pathlib import Path
 
@@ -80,15 +82,22 @@ def standardize_types(df: pd.DataFrame) -> pd.DataFrame:
 
     numeric_columns = ["temperature_c", "vibration_mm_s"]
 
+    
     for column in numeric_columns:
         original = result[column]
         converted = pd.to_numeric(original, errors="coerce")
 
+        non_finite = converted.isin([
+            float("inf"),
+            float("-inf")
+        ])
+
         result[f"invalid_{column}"] = (
-            original.notna() & converted.isna()
+            original.notna()
+            & (converted.isna() | non_finite)
         )
 
-        result[column] = converted
+        result[column] = converted.mask(non_finite)
 
     raw_timestamp = result["timestamp"].astype("string")
 

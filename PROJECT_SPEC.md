@@ -56,7 +56,7 @@ The JSON file contains a list of measurement objects with a different naming con
 |---|---|
 | measurementId | measurement_id |
 | machineId | equipment_id |
-| recordedAt | timestamp_utc |
+| recordedAt | timestamp |
 | tempC | temperature_c |
 | vibrationMmS | vibration_mm_s |
 
@@ -237,7 +237,7 @@ implemented in Python.
 - Generate 100 equipment measurement records.
 - Export 70 records to CSV and 30 records to JSON.
 - Simulate measurements from three equipment units.
-- Use a fixed random seed (42) for reproducibility.
+- Use a fixed random seed (14) for reproducibility.
 - Generate temperature and vibration measurements
   within predefined ranges.
 - Introduce controlled data-quality issues, including:
