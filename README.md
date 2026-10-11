@@ -85,6 +85,19 @@ python -m pip install -r requirements.txt
 ```
 
 
+### Run the pipeline
+
+From the project root:
+
+```bash
+python src/pipeline.py
+```
+
+The run prints each stage to the console and writes two files to `data/processed/`. Both are recreated on every run and are not tracked by Git:
+
+- `equipment_measurements.db`: SQLite database with the `measurements` table
+- `quality_report.json`: the data-quality report
+
 
 ### Run the tests
 
