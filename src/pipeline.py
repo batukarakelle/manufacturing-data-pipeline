@@ -4,8 +4,9 @@ Extract and standardize manufacturing equipment measurements.
 """
 
 from pathlib import Path
-
 import pandas as pd
+import sqlite3
+import json
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -242,6 +243,127 @@ def validate_data(
     return accepted_df, rejected_df
 
 
+
+
+
+def load_data(accepted_df: pd.DataFrame) -> int:
+    """
+    Replace stored measurements with validated records.
+
+    Args:
+        accepted_df: Validated equipment measurements.
+
+    Returns:
+        Number of records inserted into SQLite.
+    """
+    output_dir = PROJECT_ROOT / "data" / "processed"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    db_path = output_dir / "equipment_measurements.db"
+
+    records = [
+        (
+            row.measurement_id,
+            row.equipment_id,
+            row.timestamp_utc.isoformat(),
+            float(row.temperature_c),
+            float(row.vibration_mm_s),
+        )
+        for row in accepted_df.itertuples(index=False)
+    ]
+
+    connection = sqlite3.connect(db_path)
+
+    try:
+        with connection:
+            connection.execute("""
+                CREATE TABLE IF NOT EXISTS measurements (
+                    measurement_id TEXT PRIMARY KEY,
+                    equipment_id TEXT NOT NULL,
+                    timestamp_utc TEXT NOT NULL,
+                    temperature_c REAL NOT NULL,
+                    vibration_mm_s REAL NOT NULL
+                )
+            """)
+
+            connection.execute("DELETE FROM measurements")
+
+            connection.executemany(
+                """
+                INSERT INTO measurements (
+                    measurement_id,
+                    equipment_id,
+                    timestamp_utc,
+                    temperature_c,
+                    vibration_mm_s
+                )
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                records
+            )
+    finally:
+        connection.close()
+
+    return len(records)
+
+
+
+
+def build_quality_report(accepted_df: pd.DataFrame, rejected_df: pd.DataFrame) -> dict:
+    """
+    Summarize accepted records and validation rejections.
+
+    Args:
+        accepted_df: Measurements that passed validation.
+        rejected_df: Measurements with rejection reasons.
+
+    Returns:
+        A dictionary containing record counts and rejection statistics.
+    """
+    rejection_counts = rejected_df["rejection_reason"].value_counts()
+
+    report = {
+        "total_input_records": len(accepted_df) + len(rejected_df),
+        "accepted_records": len(accepted_df),
+        "rejected_records": len(rejected_df),
+        "rejection_counts": {
+            "missing_value": int(rejection_counts.get("missing_value", 0)),
+            "invalid_timestamp": int(rejection_counts.get("invalid_timestamp", 0)),
+            "invalid_numeric": int(rejection_counts.get("invalid_numeric", 0)),
+            "duplicate_measurement_id": int(
+                rejection_counts.get("duplicate_measurement_id", 0)
+            )
+        }
+    }
+
+    return report
+
+
+
+def save_quality_report(report: dict) -> Path:
+    """
+    Save the data-quality report as a JSON file.
+
+    Args:
+        report: Dictionary containing validation statistics.
+
+    Returns:
+        Path to the generated JSON report.
+    """
+    output_dir = PROJECT_ROOT / "data" / "processed"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    report_path = output_dir / "quality_report.json"
+
+    with report_path.open("w", encoding="utf-8") as file:
+        json.dump(report, file, indent=2)
+        file.write("\n")
+
+    return report_path
+
+
+
+
 def main():
     """
     Run extraction and schema standardization.
@@ -302,6 +424,19 @@ def main():
             ["measurement_id", "rejection_reason"]
         ].to_string(index=False)
     )
+
+    loaded_count = load_data(accepted_df)
+
+    print("\nSQLite load results:")
+    print(f"Inserted records: {loaded_count}")
+    
+    quality_report = build_quality_report(accepted_df, rejected_df)
+
+    report_path = save_quality_report(quality_report)
+
+    print("\nData quality report:")
+    print(json.dumps(quality_report, indent=2))
+    print(f"\nReport saved to: {report_path}")
 
 if __name__ == "__main__":
     main()
