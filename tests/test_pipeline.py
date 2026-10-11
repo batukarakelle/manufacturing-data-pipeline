@@ -4,7 +4,6 @@ Tests for equipment measurement validation.
 
 """
 
-import json
 import sqlite3
 import pandas as pd
 import pytest

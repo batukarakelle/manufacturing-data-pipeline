@@ -1,8 +1,10 @@
 """
-Extract and standardize manufacturing equipment measurements.
+Process manufacturing equipment data through a batch ETL pipeline.
+
+Extract CSV and JSON measurements, standardize schemas and data types,
+validate records, and generate SQLite and data-quality outputs.
 
 """
-
 from pathlib import Path
 import pandas as pd
 import sqlite3
@@ -366,7 +368,7 @@ def save_quality_report(report: dict) -> Path:
 
 def main():
     """
-    Run extraction and schema standardization.
+    Execute the complete ETL workflow and generate output artifacts.
     """
     csv_df, json_df = extract_data()
 

@@ -56,7 +56,7 @@ The JSON file contains a list of measurement objects with a different naming con
 |---|---|
 | measurementId | measurement_id |
 | machineId | equipment_id |
-| recordedAt | timestamp |
+| recordedAt | timestamp_utc |
 | tempC | temperature_c |
 | vibrationMmS | vibration_mm_s |
 
@@ -86,7 +86,8 @@ The pipeline must apply the following rules:
 
 **Rule 1 — Missing values**
 
-Reject records containing missing or empty required fields.
+Reject records containing missing, empty, or whitespace-only
+required fields.
 
 **Rule 2 — Invalid timestamps**
 
@@ -94,7 +95,10 @@ Reject records with timestamps that cannot be parsed or converted to UTC.
 
 **Rule 3 — Invalid numeric values**
 
-Reject records where temperature or vibration measurements cannot be converted to valid, finite numeric values.
+Reject records where temperature or vibration measurements
+cannot be converted to valid, finite numeric values.
+
+Boolean values are not accepted as numeric measurements.
 
 **Rule 4 — Duplicate measurements**
 
@@ -103,6 +107,22 @@ Identify duplicate records using `measurement_id`.
 Only the first valid occurrence of a measurement ID is accepted. Subsequent occurrences are rejected.
 
 Records are processed in a deterministic order: CSV records first, followed by JSON records.
+
+### Rejection Priority
+
+Validation rules are applied in the following priority order:
+
+1. Missing values
+2. Invalid timestamps
+3. Invalid numeric values
+4. Duplicate measurement IDs
+
+Each rejected record receives exactly one primary rejection reason.
+
+Duplicate detection is performed only on records that pass
+the preceding validation checks. The first valid occurrence
+of each measurement ID is accepted, with CSV records processed
+before JSON records.
 
 **Rule 5 — Valid records**
 
@@ -160,7 +180,7 @@ The SQLite database should be saved to:
 
 `data/processed/equipment_measurements.db`
 
-## 9. Proposed Project Structure
+## 9. Project Structure
 
 - `data/raw/` — Original synthetic CSV and JSON files
 - `data/processed/` — Generated SQLite database and quality report
