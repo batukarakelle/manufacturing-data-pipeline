@@ -46,36 +46,44 @@ Rules are checked in this order. The first rule a record breaks becomes its reje
 
 Valid timestamps are converted to UTC. For example, `2026-10-08T15:50:00+02:00` from the JSON source is stored as `2026-10-08T13:50:00+00:00`.
 
-## Getting started
 
-git clone https://github.com/batukarakelle/manufacturing-data-pipeline.git
-cd manufacturing-data-pipeline
+## Getting started
 
 Requires Python 3.11 or newer.
 
+Clone the repository:
+
+```bash
+git clone https://github.com/batukarakelle/manufacturing-data-pipeline.git
+cd manufacturing-data-pipeline
+```
+
+Create a virtual environment:
+
 ```bash
 python -m venv .venv
-
-# Windows (PowerShell)
-.\.venv\Scripts\Activate.ps1
-# macOS / Linux
-source .venv/bin/activate
-
-pip install -r requirements.txt
 ```
 
-### Run the pipeline
+Activate the virtual environment:
 
-From the project root:
+**Windows (PowerShell):**
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+**macOS / Linux:**
 
 ```bash
-python src/pipeline.py
+source .venv/bin/activate
 ```
 
-The run prints each stage to the console and writes two files to `data/processed/`. Both are recreated on every run and are not tracked by Git:
+Install the dependencies:
 
-- `equipment_measurements.db`: SQLite database with the `measurements` table
-- `quality_report.json`: the data-quality report
+```bash
+python -m pip install -r requirements.txt
+```
+
 
 
 ### Run the tests
